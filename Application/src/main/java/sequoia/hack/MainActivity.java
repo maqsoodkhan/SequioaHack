@@ -5,19 +5,29 @@
 
 package sequoia.hack;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.clarifai.api.ClarifaiClient;
+import com.clarifai.api.RecognitionRequest;
+import com.clarifai.api.RecognitionResult;
+import com.clarifai.api.Tag;
 import com.example.android.camera2basic.R;
 import com.thalmic.myo.AbstractDeviceListener;
 import com.thalmic.myo.Arm;
@@ -30,13 +40,16 @@ import com.thalmic.myo.XDirection;
 import com.thalmic.myo.scanner.ScanActivity;
 
 import java.io.File;
+import java.util.List;
+import java.util.Locale;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener, TextToSpeech.OnInitListener {
 
     private TextView mLockStateView;
     private TextView mTextView;
     private Button mBtnScan;
     private Button mBtnTakePic;
+    private ProgressDialog mProgressDialog;
     // Classes that inherit from AbstractDeviceListener can be used to receive events from Myo devices.
     // If you do not override an event, the default behavior is to do nothing.
     private DeviceListener mListener = new AbstractDeviceListener() {
@@ -113,41 +126,46 @@ public class MainActivity extends Activity implements View.OnClickListener{
             // based on the pose we receive.
             switch (pose) {
                 case UNKNOWN:
-                    System.out.println("************ UNKNOWN : "+pose.toString());
+                    System.out.println("************ UNKNOWN : " + pose.toString());
                     mTextView.setText(getString(R.string.hello_world));
                     break;
                 case REST:
                     //System.out.println("************ REST : "+pose.toString());
                 case DOUBLE_TAP:
-                    System.out.println("************ DOUBLE_TAP : "+pose.toString());
+                    System.out.println("************ DOUBLE_TAP : " + pose.toString());
                     int restTextId = R.string.hello_world;
                     switch (myo.getArm()) {
                         case LEFT:
-                            System.out.println("************ LEFT : "+pose.toString());
+                            System.out.println("************ LEFT : " + pose.toString());
                             restTextId = R.string.arm_left;
                             break;
                         case RIGHT:
-                            System.out.println("************ RIGHT : "+pose.toString());
+                            System.out.println("************ RIGHT : " + pose.toString());
                             restTextId = R.string.arm_right;
                             break;
                     }
                     mTextView.setText(getString(restTextId));
                     break;
                 case FIST:
-                    System.out.println("************ FIST : "+pose.toString());
+                    System.out.println("************ FIST : " + pose.toString());
                     takePicture();
                     mTextView.setText(getString(R.string.pose_fist));
                     break;
                 case WAVE_IN:
-                    System.out.println("************ WAVE_IN : "+pose.toString());
+                    System.out.println("************ WAVE_IN : " + pose.toString());
                     mTextView.setText(getString(R.string.pose_wavein));
                     break;
                 case WAVE_OUT:
-                    System.out.println("************ WAVE_OUT : "+pose.toString());
+                    System.out.println("************ WAVE_OUT : " + pose.toString());
                     mTextView.setText(getString(R.string.pose_waveout));
+                    Intent dialIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "9742181330"));
+                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    startActivity(dialIntent);
                     break;
                 case FINGERS_SPREAD:
-                    System.out.println("************ FINGERS_SPREAD : "+pose.toString());
+                    System.out.println("************ FINGERS_SPREAD : " + pose.toString());
                     mTextView.setText(getString(R.string.pose_fingersspread));
                     break;
             }
@@ -169,17 +187,22 @@ public class MainActivity extends Activity implements View.OnClickListener{
     };
 
     String CAMERA_FRAGMENT_TAG = "Camera";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tts = new TextToSpeech(this, this);
+        mProgressDialog = new ProgressDialog(this);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
+            checkCallLocationPermission();
         }
-        mBtnScan = (Button)findViewById(R.id.btn_scan);
+
+        mBtnScan = (Button) findViewById(R.id.btn_scan);
         mBtnScan.setOnClickListener(this);
 
-        mBtnTakePic = (Button)findViewById(R.id.btn_take_pic);
+        mBtnTakePic = (Button) findViewById(R.id.btn_take_pic);
         mBtnTakePic.setOnClickListener(this);
 
         mLockStateView = (TextView) findViewById(R.id.lock_state);
@@ -219,29 +242,29 @@ public class MainActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
 
-        switch(view.getId()){
-            case R.id.btn_scan :
+        switch (view.getId()) {
+            case R.id.btn_scan:
                 Intent intent = new Intent(this, ScanActivity.class);
                 startActivity(intent);
                 break;
 
             case R.id.btn_take_pic:
-                takePicture();
+                //takePicture();
                 break;
         }
     }
 
     private void takePicture() {
-
+        mProgressDialog.show();
+        mProgressDialog.setMessage("Please Wait....");
         android.app.FragmentManager fragmentManager = getFragmentManager();
-
         CameraViewFragment cameraTest = (CameraViewFragment) fragmentManager.findFragmentByTag(CAMERA_FRAGMENT_TAG);
         cameraTest.takePicture();
-
     }
 
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+
     public boolean checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -273,30 +296,116 @@ public class MainActivity extends Activity implements View.OnClickListener{
         }
     }
 
-    public void onSaveImageSuccess(){
+    public void onSaveImageSuccess() {
+        final Handler handler = new Handler();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(),"onSaveImageSuccess",Toast.LENGTH_SHORT).show();
-                File file = new File(getExternalFilesDir(null), "pic.jpg");
-                postData(file);
+
+                Toast.makeText(getApplicationContext(), "onSaveImageSuccess", Toast.LENGTH_SHORT).show();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        File file = new File(getExternalFilesDir(null), "pic.jpg");
+
+                        ClarifaiClient clarifai = new ClarifaiClient("ZjKS4N7bl5aVH42OPYVPrc6hR8nwbgyBb2PUHRYG", "hkXfptK0LtD_G6OS4EEt6tJMgLPU4Zbv31azexKB");
+                        List<RecognitionResult> results =
+                                clarifai.recognize(new RecognitionRequest(file));
+
+                        String top_5_tags = " ";
+
+                        int i = 0;
+                        for (Tag tag : results.get(0).getTags()) {
+                            i++;
+                            if (i <= 5) {
+                                top_5_tags = top_5_tags + tag.getName();
+                            }
+
+                            System.out.println("**************TAGS :"+tag.getName() + ": " + tag.getProbability());
+                        }
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mProgressDialog.dismiss();
+                            }
+                        });
+                        speakOut(top_5_tags);
+                    }
+                }).start();
             }
         });
 
     }
 
-    private void postData(final File file){
+    private void postData(final File file) {
         final String url = "http://b8bbcd3e.ngrok.io/vision/upload";
         new Thread(new Runnable() {
             @Override
             public void run() {
                 HttpConnection httpURLConnection = new HttpConnection();
                 try {
-                    httpURLConnection.multipartRequest(url,"",file,null);
+                    httpURLConnection.multipartRequest(url, "", file, null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+
+    public boolean checkCallLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Asking user if explanation is needed
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    android.Manifest.permission.CALL_PHONE)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+                //Prompt the user once explanation has been shown
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.CALL_PHONE},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+
+
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.CALL_PHONE},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private TextToSpeech tts;
+
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+
+            int result = tts.setLanguage(Locale.US);
+
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "This Language is not supported");
+            } else {
+                //speakOut("Hello");
+            }
+
+        } else {
+            Log.e("TTS", "Initilization Failed!");
+        }
+    }
+
+
+    private void speakOut(String speach) {
+        tts.speak(speach, TextToSpeech.QUEUE_FLUSH, null);
     }
 }
