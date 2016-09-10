@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-sw600dp-v13/values-sw600dp-v13.xml -->
+    <eat-comment/>
+    <dimen name="abc_action_bar_content_inset_material">24dp</dimen>
+    <dimen name="abc_action_bar_content_inset_with_nav">80dp</dimen>
+    <dimen name="abc_action_bar_default_height_material">64dp</dimen>
+    <dimen name="abc_action_bar_default_padding_end_material">8dp</dimen>
+    <dimen name="abc_action_bar_default_padding_start_material">8dp</dimen>
+    <dimen name="abc_config_prefDialogWidth">580dp</dimen>
+    <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
+    <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
+    <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/build/intermediates/exploded-aar/com.thalmic/myosdk/0.10.0/res/values-sw600dp-v13/values.xml -->
+    <eat-comment/>
+    <dimen name="myosdk__fragment_scan_window_height">500dp</dimen>
+    <dimen name="myosdk__fragment_scan_window_width">400dp</dimen>
+    <style name="myosdk__ScanActivityTheme" parent="myosdk__PopupActivityTheme"/>
+</resources>

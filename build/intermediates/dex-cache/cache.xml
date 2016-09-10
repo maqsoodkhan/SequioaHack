@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\exploded-aar\com.thalmic\myosdk\0.10.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="d189db75174a41996c33bb243d2228aacf10fa53">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\classes-745a55db2956814bb085edd9c9c9ac9110f71169.jar" />
+    </item>
+    <item
+        jar="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\exploded-aar\com.android.support\support-v13\24.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="327f68d58bb39fb8b585150596b313541f8fdb87">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\classes-67f51c925b9204f872c8753723c168bcf25a9b96.jar" />
+    </item>
+    <item
+        jar="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="1256c10604bb098490eab070d76754ac5ceab35c">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\classes-3c0abb4a37164eec21f756dcb0ec209d960e9bea.jar" />
+    </item>
+    <item
+        jar="C:\Users\310190722\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\24.1.1\3af19f153122737b372622fa6c81dd11a1c6b999\support-annotations-24.1.1.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="3af19f153122737b372622fa6c81dd11a1c6b999">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\support-annotations-24.1.1-a0b645e803b690826907156f21aab3ea21ac4543.jar" />
+    </item>
+    <item
+        jar="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\exploded-aar\com.android.support\support-v13\24.1.1\jars\libs\internal_impl-24.1.1.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="ca74722504f90166103d01edcdfdb93192eb1cba">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\internal_impl-24.1.1-6461cbf49be1f8501efdb9b0af3126dfbd5b4c50.jar" />
+    </item>
+    <item
+        jar="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="c936c1bd42f0c018c18920c7bec619ef056b24f8">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\classes-b85a27d08a94e06f201e4c2a6c6899b5b5bd6814.jar" />
+    </item>
+    <item
+        jar="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="4add8aa95c9f4e9a2ad64b7e2bf08e97e28955c1">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\classes-2ca47d569e7a048891b9d97344353c5d380e6377.jar" />
+    </item>
+    <item
+        jar="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\jars\libs\internal_impl-24.1.1.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="f78c2f395cb096f9dc1dc07e729922b8fcd3c4f5">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\internal_impl-24.1.1-88b710b8f69b880bfb36e78b8dad34fa8ce70161.jar" />
+    </item>
+    <item
+        jar="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="6d7d803871e3203465f71a163e7af104f807b446">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\classes-648d487295818ae4d08a0b0ef3df850e5ce5e366.jar" />
+    </item>
+    <item
+        jar="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="f62e763609f65e47dc6c498760a4accf02776788">
+        <dex dex="C:\BKP_Philips\SequoiaHack\Sequoia\Application\build\intermediates\pre-dexed\debug\classes-fead36803b6dc7b7ad4b414050a01ff9271046d6.jar" />
+    </item>
+
+</items>
