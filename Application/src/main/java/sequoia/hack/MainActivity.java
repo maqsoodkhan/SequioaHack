@@ -156,7 +156,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
                     break;
                 case WAVE_IN:
                     System.out.println("************ WAVE_IN : " + pose.toString());
-                    speakOut("your uber has been booked from current location to " + mAddressField.getText().toString());
+                    sendSMS();
                     mTextView.setText(getString(R.string.pose_wavein));
                     break;
                 case WAVE_OUT:
@@ -173,7 +173,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
                     break;
                 case FINGERS_SPREAD:
                     System.out.println("************ FINGERS_SPREAD : " + pose.toString());
-                    sendSMS();
+                    speakOut("your uber has been booked from current location to " + mAddressField.getText().toString());
                     mTextView.setText(getString(R.string.pose_fingersspread));
                     break;
             }
@@ -334,45 +334,49 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
 
 
     public void onSaveImageSuccess() {
-        final Handler handler = new Handler();
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
 
-                Toast.makeText(getApplicationContext(), "onSaveImageSuccess", Toast.LENGTH_SHORT).show();
+        try{
+            final Handler handler = new Handler();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        File file = new File(getExternalFilesDir(null), "pic.jpg");
+                    Toast.makeText(getApplicationContext(), "onSaveImageSuccess", Toast.LENGTH_SHORT).show();
 
-                        ClarifaiClient clarifai = new ClarifaiClient("ZjKS4N7bl5aVH42OPYVPrc6hR8nwbgyBb2PUHRYG", "hkXfptK0LtD_G6OS4EEt6tJMgLPU4Zbv31azexKB");
-                        List<RecognitionResult> results =
-                                clarifai.recognize(new RecognitionRequest(file));
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            File file = new File(getExternalFilesDir(null), "pic.jpg");
 
-                        String top_5_tags = "These are the tags with respect to the image";
+                            ClarifaiClient clarifai = new ClarifaiClient("ZjKS4N7bl5aVH42OPYVPrc6hR8nwbgyBb2PUHRYG", "hkXfptK0LtD_G6OS4EEt6tJMgLPU4Zbv31azexKB");
+                            List<RecognitionResult> results =
+                                    clarifai.recognize(new RecognitionRequest(file));
 
-                        int i = 0;
-                        for (Tag tag : results.get(0).getTags()) {
-                            i++;
-                            if (i <= 12) {
-                                top_5_tags = top_5_tags + tag.getName();
+                            String top_5_tags = "These are the tags with respect to the image";
+
+                            int i = 0;
+                            for (Tag tag : results.get(0).getTags()) {
+                                i++;
+                                if (i <= 12) {
+                                    top_5_tags = top_5_tags + tag.getName();
+                                }
+
+                                System.out.println("************** TAGS :" + tag.getName() + ": " + tag.getProbability());
                             }
-
-                            System.out.println("************** TAGS :" + tag.getName() + ": " + tag.getProbability());
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mProgressDialog.dismiss();
+                                }
+                            });
+                            speakOut(top_5_tags);
                         }
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mProgressDialog.dismiss();
-                            }
-                        });
-                        speakOut(top_5_tags);
-                    }
-                }).start();
-            }
-        });
-
+                    }).start();
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void postData(final File file) {
