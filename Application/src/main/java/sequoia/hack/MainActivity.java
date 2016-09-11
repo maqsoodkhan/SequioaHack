@@ -48,7 +48,7 @@ import java.util.Locale;
 public class MainActivity extends Activity implements View.OnClickListener, TextToSpeech.OnInitListener {
 
     private TextView mLockStateView;
-    //private TextView mTextView;
+    private TextView mTextView;
     private Button mBtnScan;
     private ProgressDialog mProgressDialog;
     private EditText mPhoneNumField;
@@ -60,19 +60,22 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
         // onConnect() is called whenever a Myo has been connected.
         @Override
         public void onConnect(Myo myo, long timestamp) {
-
+            // Set the text color of the text view to cyan when a Myo connects.
+            mTextView.setTextColor(Color.CYAN);
         }
 
         // onDisconnect() is called whenever a Myo has been disconnected.
         @Override
         public void onDisconnect(Myo myo, long timestamp) {
+            // Set the text color of the text view to red when a Myo disconnects.
+            mTextView.setTextColor(Color.RED);
         }
 
         // onArmSync() is called whenever Myo has recognized a Sync Gesture after someone has put it on their
         // arm. This lets Myo know which arm it's on and which way it's facing.
         @Override
         public void onArmSync(Myo myo, long timestamp, Arm arm, XDirection xDirection) {
-
+            mTextView.setText(myo.getArm() == Arm.LEFT ? R.string.arm_left : R.string.arm_right);
         }
 
         // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after
@@ -80,6 +83,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
         // when Myo is moved around on the arm.
         @Override
         public void onArmUnsync(Myo myo, long timestamp) {
+            mTextView.setText(R.string.hello_world);
         }
 
         // onUnlock() is called whenever a synced Myo has been unlocked. Under the standard locking
@@ -126,6 +130,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
             switch (pose) {
                 case UNKNOWN:
                     System.out.println("************ UNKNOWN : " + pose.toString());
+                    mTextView.setText(getString(R.string.hello_world));
                     break;
                 case REST:
                     //System.out.println("************ REST : "+pose.toString());
@@ -142,17 +147,21 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
                             restTextId = R.string.arm_right;
                             break;
                     }
+                    mTextView.setText(getString(restTextId));
                     break;
                 case FIST:
                     System.out.println("************ FIST : " + pose.toString());
                     takePicture();
+                    mTextView.setText(getString(R.string.pose_fist));
                     break;
                 case WAVE_IN:
                     System.out.println("************ WAVE_IN : " + pose.toString());
                     speakOut("your uber has been booked from current location to " + mAddressField.getText().toString());
+                    mTextView.setText(getString(R.string.pose_wavein));
                     break;
                 case WAVE_OUT:
                     System.out.println("************ WAVE_OUT : " + pose.toString());
+                    mTextView.setText(getString(R.string.pose_waveout));
                     if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         checkCallLocationPermission();
                     }
@@ -163,8 +172,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
                     startActivity(dialIntent);
                     break;
                 case FINGERS_SPREAD:
-                    sendSMS();
                     System.out.println("************ FINGERS_SPREAD : " + pose.toString());
+                    sendSMS();
+                    mTextView.setText(getString(R.string.pose_fingersspread));
                     break;
             }
 
@@ -203,6 +213,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
         mBtnScan.setOnClickListener(this);
 
         mLockStateView = (TextView) findViewById(R.id.lock_state);
+        mTextView = (TextView) findViewById(R.id.lock_state);
+
 
         getFragmentManager().beginTransaction()
                 .replace(R.id.container_id, CameraViewFragment.newInstance(), CAMERA_FRAGMENT_TAG)
@@ -242,6 +254,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
                 Intent intent = new Intent(this, ScanActivity.class);
                 startActivity(intent);
                 break;
+
         }
     }
 
@@ -317,6 +330,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
             return true;
         }
     }
+
 
     public void onSaveImageSuccess() {
         final Handler handler = new Handler();

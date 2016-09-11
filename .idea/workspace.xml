@@ -41,25 +41,36 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/sequoia/hack/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5094637">
-              <caret line="165" column="30" selection-start-line="165" selection-start-column="30" selection-end-line="165" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.3357453">
+              <caret line="157" column="84" selection-start-line="157" selection-start-column="84" selection-end-line="157" selection-end-column="84" />
               <folding>
-                <element signature="e#3217#3218#0" expanded="true" />
-                <element signature="e#3254#3271#0" expanded="true" />
-                <element signature="e#3282#3283#0" expanded="true" />
-                <element signature="e#3532#3533#0" expanded="true" />
-                <element signature="e#3569#3584#0" expanded="true" />
-                <element signature="e#3595#3596#0" expanded="true" />
-                <element signature="e#13223#14752#0" expanded="true" />
-                <element signature="e#13429#14718#0" expanded="true" />
-                <element signature="e#14413#14630#0" expanded="true" />
-                <element signature="e#14629#14630#0" expanded="true" />
-                <element signature="e#14717#14718#0" expanded="true" />
-                <element signature="e#14751#14752#0" expanded="true" />
-                <element signature="e#14896#15261#0" expanded="true" />
-                <element signature="e#15260#15261#0" expanded="true" />
-                <element signature="e#17135#17136#0" expanded="true" />
-                <element signature="e#17200#17201#0" expanded="true" />
+                <element signature="e#2886#2903#0" expanded="true" />
+                <element signature="e#2906#2924#0" expanded="true" />
+                <element signature="e#3340#3360#0" expanded="true" />
+                <element signature="e#3621#3622#0" expanded="true" />
+                <element signature="e#3658#3675#0" expanded="true" />
+                <element signature="e#3686#3687#0" expanded="true" />
+                <element signature="e#3936#3937#0" expanded="true" />
+                <element signature="e#3973#3988#0" expanded="true" />
+                <element signature="e#3999#4000#0" expanded="true" />
+                <element signature="e#5469#5500#0" expanded="true" />
+                <element signature="e#5797#5817#0" expanded="true" />
+                <element signature="e#6029#6046#0" expanded="true" />
+                <element signature="e#6251#6269#0" expanded="true" />
+                <element signature="e#6599#6628#0" expanded="true" />
+                <element signature="e#6933#6964#0" expanded="true" />
+                <element signature="e#7149#7181#0" expanded="true" />
+                <element signature="e#7957#7995#0" expanded="true" />
+                <element signature="e#14120#15649#0" expanded="true" />
+                <element signature="e#14326#15615#0" expanded="true" />
+                <element signature="e#15310#15527#0" expanded="true" />
+                <element signature="e#15526#15527#0" expanded="true" />
+                <element signature="e#15614#15615#0" expanded="true" />
+                <element signature="e#15648#15649#0" expanded="true" />
+                <element signature="e#15793#16158#0" expanded="true" />
+                <element signature="e#16157#16158#0" expanded="true" />
+                <element signature="e#18032#18033#0" expanded="true" />
+                <element signature="e#18097#18098#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,11 +78,11 @@
       </file>
       <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="android-designer">
+          <provider selected="true" editor-type-id="android-designer">
             <state />
           </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4">
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.1923075">
               <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
               <folding>
                 <element signature="e#738#764#0" expanded="true" />
@@ -1938,7 +1949,7 @@
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2122,11 +2133,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
+      <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
           <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
           <folding>
             <element signature="e#738#764#0" expanded="true" />
@@ -2137,25 +2148,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/sequoia/hack/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5094637">
-          <caret line="165" column="30" selection-start-line="165" selection-start-column="30" selection-end-line="165" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.3357453">
+          <caret line="157" column="84" selection-start-line="157" selection-start-column="84" selection-end-line="157" selection-end-column="84" />
           <folding>
-            <element signature="e#3217#3218#0" expanded="true" />
-            <element signature="e#3254#3271#0" expanded="true" />
-            <element signature="e#3282#3283#0" expanded="true" />
-            <element signature="e#3532#3533#0" expanded="true" />
-            <element signature="e#3569#3584#0" expanded="true" />
-            <element signature="e#3595#3596#0" expanded="true" />
-            <element signature="e#13223#14752#0" expanded="true" />
-            <element signature="e#13429#14718#0" expanded="true" />
-            <element signature="e#14413#14630#0" expanded="true" />
-            <element signature="e#14629#14630#0" expanded="true" />
-            <element signature="e#14717#14718#0" expanded="true" />
-            <element signature="e#14751#14752#0" expanded="true" />
-            <element signature="e#14896#15261#0" expanded="true" />
-            <element signature="e#15260#15261#0" expanded="true" />
-            <element signature="e#17135#17136#0" expanded="true" />
-            <element signature="e#17200#17201#0" expanded="true" />
+            <element signature="e#2886#2903#0" expanded="true" />
+            <element signature="e#2906#2924#0" expanded="true" />
+            <element signature="e#3340#3360#0" expanded="true" />
+            <element signature="e#3621#3622#0" expanded="true" />
+            <element signature="e#3658#3675#0" expanded="true" />
+            <element signature="e#3686#3687#0" expanded="true" />
+            <element signature="e#3936#3937#0" expanded="true" />
+            <element signature="e#3973#3988#0" expanded="true" />
+            <element signature="e#3999#4000#0" expanded="true" />
+            <element signature="e#5469#5500#0" expanded="true" />
+            <element signature="e#5797#5817#0" expanded="true" />
+            <element signature="e#6029#6046#0" expanded="true" />
+            <element signature="e#6251#6269#0" expanded="true" />
+            <element signature="e#6599#6628#0" expanded="true" />
+            <element signature="e#6933#6964#0" expanded="true" />
+            <element signature="e#7149#7181#0" expanded="true" />
+            <element signature="e#7957#7995#0" expanded="true" />
+            <element signature="e#14120#15649#0" expanded="true" />
+            <element signature="e#14326#15615#0" expanded="true" />
+            <element signature="e#15310#15527#0" expanded="true" />
+            <element signature="e#15526#15527#0" expanded="true" />
+            <element signature="e#15614#15615#0" expanded="true" />
+            <element signature="e#15648#15649#0" expanded="true" />
+            <element signature="e#15793#16158#0" expanded="true" />
+            <element signature="e#16157#16158#0" expanded="true" />
+            <element signature="e#18032#18033#0" expanded="true" />
+            <element signature="e#18097#18098#0" expanded="true" />
           </folding>
         </state>
       </provider>
