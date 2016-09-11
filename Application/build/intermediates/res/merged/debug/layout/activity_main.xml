@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dip"
+            android:layout_marginTop="20dip"
             android:orientation="vertical"
             android:paddingLeft="@dimen/reg_layout_margin"
             android:paddingRight="@dimen/reg_layout_margin">
@@ -25,7 +25,7 @@
                 android:id="@+id/btn_scan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Scan" />
+                android:text="BLE Scan" />
 
             <TextView
                 android:id="@+id/lock_state"
@@ -39,14 +39,14 @@
 
             <FrameLayout
                 android:id="@+id/container_id"
-                android:layout_width="fill_parent"
-                android:layout_height="200dip">
+                android:layout_width="match_parent"
+                android:layout_height="420dip">
 
             </FrameLayout>
 
             <EditText
                 android:id="@+id/et_phone_num"
-                android:layout_width="1000dip"
+                android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="10dip"
                 android:background="@drawable/edit_txt_port"

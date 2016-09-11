@@ -237,6 +237,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        tts.shutdown();
         // We don't want any callbacks when the Activity is gone, so unregister the listener.
         Hub.getInstance().removeListener(mListener);
 
@@ -349,7 +350,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
                         List<RecognitionResult> results =
                                 clarifai.recognize(new RecognitionRequest(file));
 
-                        String top_5_tags = "";
+                        String top_5_tags = "These are the tags with respect to the image";
 
                         int i = 0;
                         for (Tag tag : results.get(0).getTags()) {

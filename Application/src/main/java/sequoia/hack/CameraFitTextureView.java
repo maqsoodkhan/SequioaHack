@@ -62,15 +62,19 @@ public class CameraFitTextureView extends TextureView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
-        if (0 == mRatioWidth || 0 == mRatioHeight) {
+
+        setMeasuredDimension(width,1300);
+        /*if (0 == mRatioWidth || 0 == mRatioHeight) {
             setMeasuredDimension(width, height);
-        } else {
+        }
+        else {
             if (width < height * mRatioWidth / mRatioHeight) {
                 setMeasuredDimension(width, width * mRatioHeight / mRatioWidth);
             } else {
-                setMeasuredDimension(height * mRatioWidth / mRatioHeight, height);
+                //setMeasuredDimension(height * mRatioWidth / mRatioHeight, height);
+
             }
-        }
+        }*/
     }
 
 }
