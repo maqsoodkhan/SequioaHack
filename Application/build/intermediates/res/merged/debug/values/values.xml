@@ -192,6 +192,9 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
+    <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/src/main/res/values/template-dimens.xml -->
+    <eat-comment/>
+    <dimen name="btn_reg_text_size">12sp</dimen>
     <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
@@ -225,6 +228,8 @@
     <dimen name="notification_subtext_size">12dp</dimen>
     <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/src/main/res/values/template-dimens.xml -->
     <eat-comment/>
+    <dimen name="reg_home_tiltle_padding">10dip</dimen>
+    <dimen name="reg_layout_margin">10dp</dimen>
     <dimen name="vertical_page_margin">@dimen/margin_medium</dimen>
     <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values/values.xml -->
     <eat-comment/>
@@ -273,9 +278,12 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="address">ITC Gardenia level road</string>
     <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/src/main/res/values/base-strings.xml -->
     <eat-comment/>
-    <string name="app_name">Camera2Basic</string>
+    <string name="app_name">Myo Blind Helper</string>
     <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="arm_left">Left Arm</string>
@@ -1730,4 +1738,13 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
     <style name="myosdk__ScanActivityTheme" parent="android:Theme.Holo.Light"/>
+    <!-- From: file:/C:/BKP_Philips/SequoiaHack/Sequoia/Application/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="reg_style_tab_hint">
+        <item name="android:textSize">@dimen/btn_reg_text_size</item>
+        <item name="android:paddingLeft">@dimen/reg_home_tiltle_padding</item>
+        <item name="android:paddingRight">@dimen/reg_home_tiltle_padding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

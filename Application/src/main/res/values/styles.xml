@@ -15,4 +15,12 @@
 -->
 <resources>
     <style name="MaterialTheme" parent="android:Theme.Material.Light.NoActionBar.Fullscreen" />
+
+    <style name="reg_style_tab_hint">
+        <item name="android:textSize">@dimen/btn_reg_text_size</item>
+        <item name="android:paddingLeft">@dimen/reg_home_tiltle_padding</item>
+        <item name="android:paddingRight">@dimen/reg_home_tiltle_padding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

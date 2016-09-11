@@ -18,9 +18,11 @@ import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.telephony.gsm.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,10 +48,11 @@ import java.util.Locale;
 public class MainActivity extends Activity implements View.OnClickListener, TextToSpeech.OnInitListener {
 
     private TextView mLockStateView;
-    private TextView mTextView;
+    //private TextView mTextView;
     private Button mBtnScan;
-    private Button mBtnTakePic;
     private ProgressDialog mProgressDialog;
+    private EditText mPhoneNumField;
+    private EditText mAddressField;
     // Classes that inherit from AbstractDeviceListener can be used to receive events from Myo devices.
     // If you do not override an event, the default behavior is to do nothing.
     private DeviceListener mListener = new AbstractDeviceListener() {
@@ -57,22 +60,19 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
         // onConnect() is called whenever a Myo has been connected.
         @Override
         public void onConnect(Myo myo, long timestamp) {
-            // Set the text color of the text view to cyan when a Myo connects.
-            mTextView.setTextColor(Color.CYAN);
+
         }
 
         // onDisconnect() is called whenever a Myo has been disconnected.
         @Override
         public void onDisconnect(Myo myo, long timestamp) {
-            // Set the text color of the text view to red when a Myo disconnects.
-            mTextView.setTextColor(Color.RED);
         }
 
         // onArmSync() is called whenever Myo has recognized a Sync Gesture after someone has put it on their
         // arm. This lets Myo know which arm it's on and which way it's facing.
         @Override
         public void onArmSync(Myo myo, long timestamp, Arm arm, XDirection xDirection) {
-            mTextView.setText(myo.getArm() == Arm.LEFT ? R.string.arm_left : R.string.arm_right);
+
         }
 
         // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after
@@ -80,7 +80,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
         // when Myo is moved around on the arm.
         @Override
         public void onArmUnsync(Myo myo, long timestamp) {
-            mTextView.setText(R.string.hello_world);
         }
 
         // onUnlock() is called whenever a synced Myo has been unlocked. Under the standard locking
@@ -127,7 +126,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
             switch (pose) {
                 case UNKNOWN:
                     System.out.println("************ UNKNOWN : " + pose.toString());
-                    mTextView.setText(getString(R.string.hello_world));
                     break;
                 case REST:
                     //System.out.println("************ REST : "+pose.toString());
@@ -144,29 +142,29 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
                             restTextId = R.string.arm_right;
                             break;
                     }
-                    mTextView.setText(getString(restTextId));
                     break;
                 case FIST:
                     System.out.println("************ FIST : " + pose.toString());
                     takePicture();
-                    mTextView.setText(getString(R.string.pose_fist));
                     break;
                 case WAVE_IN:
                     System.out.println("************ WAVE_IN : " + pose.toString());
-                    mTextView.setText(getString(R.string.pose_wavein));
+                    speakOut("your uber has been booked from current location to " + mAddressField.getText().toString());
                     break;
                 case WAVE_OUT:
                     System.out.println("************ WAVE_OUT : " + pose.toString());
-                    mTextView.setText(getString(R.string.pose_waveout));
-                    Intent dialIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "9742181330"));
+                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        checkCallLocationPermission();
+                    }
+                    Intent dialIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + mPhoneNumField.getText().toString()));
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                         return;
                     }
                     startActivity(dialIntent);
                     break;
                 case FINGERS_SPREAD:
+                    sendSMS();
                     System.out.println("************ FINGERS_SPREAD : " + pose.toString());
-                    mTextView.setText(getString(R.string.pose_fingersspread));
                     break;
             }
 
@@ -192,22 +190,19 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tts = new TextToSpeech(this, this);
-        mProgressDialog = new ProgressDialog(this);
+
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
-            checkCallLocationPermission();
+            checkSMSPermission();
         }
-
+        tts = new TextToSpeech(this, this);
+        mProgressDialog = new ProgressDialog(this);
+        mPhoneNumField = (EditText) findViewById(R.id.et_phone_num);
+        mAddressField = (EditText) findViewById(R.id.et_address);
         mBtnScan = (Button) findViewById(R.id.btn_scan);
         mBtnScan.setOnClickListener(this);
 
-        mBtnTakePic = (Button) findViewById(R.id.btn_take_pic);
-        mBtnTakePic.setOnClickListener(this);
-
         mLockStateView = (TextView) findViewById(R.id.lock_state);
-        mTextView = (TextView) findViewById(R.id.lock_state);
-
 
         getFragmentManager().beginTransaction()
                 .replace(R.id.container_id, CameraViewFragment.newInstance(), CAMERA_FRAGMENT_TAG)
@@ -246,10 +241,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
             case R.id.btn_scan:
                 Intent intent = new Intent(this, ScanActivity.class);
                 startActivity(intent);
-                break;
-
-            case R.id.btn_take_pic:
-                //takePicture();
                 break;
         }
     }
@@ -296,6 +287,37 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
         }
     }
 
+    public boolean checkSMSPermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Asking user if explanation is needed
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    android.Manifest.permission.SEND_SMS)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+                //Prompt the user once explanation has been shown
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+
+
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public void onSaveImageSuccess() {
         final Handler handler = new Handler();
         runOnUiThread(new Runnable() {
@@ -313,16 +335,16 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
                         List<RecognitionResult> results =
                                 clarifai.recognize(new RecognitionRequest(file));
 
-                        String top_5_tags = " ";
+                        String top_5_tags = "";
 
                         int i = 0;
                         for (Tag tag : results.get(0).getTags()) {
                             i++;
-                            if (i <= 5) {
+                            if (i <= 12) {
                                 top_5_tags = top_5_tags + tag.getName();
                             }
 
-                            System.out.println("**************TAGS :"+tag.getName() + ": " + tag.getProbability());
+                            System.out.println("************** TAGS :" + tag.getName() + ": " + tag.getProbability());
                         }
                         handler.post(new Runnable() {
                             @Override
@@ -407,5 +429,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
 
     private void speakOut(String speach) {
         tts.speak(speach, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    public void sendSMS() {
+        SmsManager.getDefault().sendTextMessage(mPhoneNumField.getText().toString(), null, "Please contact me as it's very urgent", null, null);
     }
 }

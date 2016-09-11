@@ -1790,27 +1790,30 @@ containing a value of this type.
         public static final int abc_text_size_subtitle_material_toolbar=0x7f060003;
         public static final int abc_text_size_title_material=0x7f06004a;
         public static final int abc_text_size_title_material_toolbar=0x7f060004;
-        public static final int cardview_compat_inset_shadow=0x7f06004b;
-        public static final int cardview_default_elevation=0x7f06004c;
-        public static final int cardview_default_radius=0x7f06004d;
-        public static final int disabled_alpha_material_dark=0x7f06004e;
-        public static final int disabled_alpha_material_light=0x7f06004f;
-        public static final int highlight_alpha_material_colored=0x7f060050;
-        public static final int highlight_alpha_material_dark=0x7f060051;
-        public static final int highlight_alpha_material_light=0x7f060052;
+        public static final int btn_reg_text_size=0x7f06004b;
+        public static final int cardview_compat_inset_shadow=0x7f06004c;
+        public static final int cardview_default_elevation=0x7f06004d;
+        public static final int cardview_default_radius=0x7f06004e;
+        public static final int disabled_alpha_material_dark=0x7f06004f;
+        public static final int disabled_alpha_material_light=0x7f060050;
+        public static final int highlight_alpha_material_colored=0x7f060051;
+        public static final int highlight_alpha_material_dark=0x7f060052;
+        public static final int highlight_alpha_material_light=0x7f060053;
         public static final int horizontal_page_margin=0x7f060012;
-        public static final int margin_huge=0x7f060053;
-        public static final int margin_large=0x7f060054;
-        public static final int margin_medium=0x7f060055;
-        public static final int margin_small=0x7f060056;
-        public static final int margin_tiny=0x7f060057;
-        public static final int myosdk__activity_horizontal_margin=0x7f060058;
-        public static final int myosdk__activity_vertical_margin=0x7f060059;
+        public static final int margin_huge=0x7f060054;
+        public static final int margin_large=0x7f060055;
+        public static final int margin_medium=0x7f060056;
+        public static final int margin_small=0x7f060057;
+        public static final int margin_tiny=0x7f060058;
+        public static final int myosdk__activity_horizontal_margin=0x7f060059;
+        public static final int myosdk__activity_vertical_margin=0x7f06005a;
         public static final int myosdk__fragment_scan_window_height=0x7f060010;
         public static final int myosdk__fragment_scan_window_width=0x7f060011;
-        public static final int notification_large_icon_height=0x7f06005a;
-        public static final int notification_large_icon_width=0x7f06005b;
-        public static final int notification_subtext_size=0x7f06005c;
+        public static final int notification_large_icon_height=0x7f06005b;
+        public static final int notification_large_icon_width=0x7f06005c;
+        public static final int notification_subtext_size=0x7f06005d;
+        public static final int reg_home_tiltle_padding=0x7f06005e;
+        public static final int reg_layout_margin=0x7f06005f;
         public static final int vertical_page_margin=0x7f060013;
     }
     public static final class drawable {
@@ -1890,12 +1893,13 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020049;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f02004a;
         public static final int abc_textfield_search_material=0x7f02004b;
-        public static final int ic_action_info=0x7f02004c;
-        public static final int ic_launcher=0x7f02004d;
-        public static final int myosdk__connected_dot=0x7f02004e;
-        public static final int myosdk__firmware_incompatible_dot=0x7f02004f;
-        public static final int notification_template_icon_bg=0x7f020051;
-        public static final int tile=0x7f020050;
+        public static final int edit_txt_port=0x7f02004c;
+        public static final int ic_action_info=0x7f02004d;
+        public static final int ic_launcher=0x7f02004e;
+        public static final int myosdk__connected_dot=0x7f02004f;
+        public static final int myosdk__firmware_incompatible_dot=0x7f020050;
+        public static final int notification_template_icon_bg=0x7f020052;
+        public static final int tile=0x7f020051;
     }
     public static final class id {
         public static final int action0=0x7f0a0060;
@@ -1920,14 +1924,13 @@ containing a value of this type.
         public static final int beginning=0x7f0a001a;
         public static final int bottom=0x7f0a0022;
         public static final int btn_scan=0x7f0a0055;
-        public static final int btn_take_pic=0x7f0a0056;
         public static final int buttonPanel=0x7f0a002e;
         public static final int cancel_action=0x7f0a0061;
         public static final int checkbox=0x7f0a003c;
         public static final int chronometer=0x7f0a0067;
         public static final int collapseActionView=0x7f0a001e;
         public static final int container=0x7f0a0054;
-        public static final int container_id=0x7f0a0058;
+        public static final int container_id=0x7f0a0057;
         public static final int contentPanel=0x7f0a0034;
         public static final int custom=0x7f0a003a;
         public static final int customPanel=0x7f0a0039;
@@ -1937,6 +1940,8 @@ containing a value of this type.
         public static final int edit_query=0x7f0a0047;
         public static final int end=0x7f0a001b;
         public static final int end_padder=0x7f0a006c;
+        public static final int et_address=0x7f0a0059;
+        public static final int et_phone_num=0x7f0a0058;
         public static final int expand_activities_button=0x7f0a0028;
         public static final int expanded_menu=0x7f0a003b;
         public static final int home=0x7f0a0004;
@@ -1949,7 +1954,7 @@ containing a value of this type.
         public static final int line3=0x7f0a0069;
         public static final int listMode=0x7f0a0009;
         public static final int list_item=0x7f0a002b;
-        public static final int lock_state=0x7f0a0057;
+        public static final int lock_state=0x7f0a0056;
         public static final int media_actions=0x7f0a0063;
         public static final int middle=0x7f0a001c;
         public static final int multiply=0x7f0a0014;
@@ -1966,7 +1971,6 @@ containing a value of this type.
         public static final int progress_circular=0x7f0a0005;
         public static final int progress_horizontal=0x7f0a0006;
         public static final int radio=0x7f0a003e;
-        public static final int save_image_view_id=0x7f0a0059;
         public static final int screen=0x7f0a0015;
         public static final int scrollIndicatorDown=0x7f0a0038;
         public static final int scrollIndicatorUp=0x7f0a0035;
@@ -2095,30 +2099,31 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with=0x7f050010;
         public static final int abc_shareactionprovider_share_with_application=0x7f050011;
         public static final int abc_toolbar_collapse_description=0x7f050012;
-        public static final int app_name=0x7f050020;
-        public static final int arm_left=0x7f050021;
-        public static final int arm_right=0x7f050022;
-        public static final int camera_error=0x7f050023;
-        public static final int description_info=0x7f050024;
-        public static final int hello_world=0x7f050025;
-        public static final int intro_message=0x7f050026;
-        public static final int locked=0x7f050027;
-        public static final int myosdk__action_scan=0x7f050028;
-        public static final int myosdk__action_stop_scan=0x7f050029;
-        public static final int myosdk__firmware_required_format=0x7f05002a;
-        public static final int myosdk__firmware_version_format=0x7f05002b;
-        public static final int myosdk__title_activity_scan=0x7f05002c;
-        public static final int myosdk__unknown_myo=0x7f05002d;
-        public static final int picture=0x7f05002e;
-        public static final int pose_fingersspread=0x7f05002f;
-        public static final int pose_fist=0x7f050030;
-        public static final int pose_rest=0x7f050031;
-        public static final int pose_wavein=0x7f050032;
-        public static final int pose_waveout=0x7f050033;
-        public static final int request_permission=0x7f050034;
-        public static final int scan=0x7f050035;
+        public static final int address=0x7f050020;
+        public static final int app_name=0x7f050021;
+        public static final int arm_left=0x7f050022;
+        public static final int arm_right=0x7f050023;
+        public static final int camera_error=0x7f050024;
+        public static final int description_info=0x7f050025;
+        public static final int hello_world=0x7f050026;
+        public static final int intro_message=0x7f050027;
+        public static final int locked=0x7f050028;
+        public static final int myosdk__action_scan=0x7f050029;
+        public static final int myosdk__action_stop_scan=0x7f05002a;
+        public static final int myosdk__firmware_required_format=0x7f05002b;
+        public static final int myosdk__firmware_version_format=0x7f05002c;
+        public static final int myosdk__title_activity_scan=0x7f05002d;
+        public static final int myosdk__unknown_myo=0x7f05002e;
+        public static final int picture=0x7f05002f;
+        public static final int pose_fingersspread=0x7f050030;
+        public static final int pose_fist=0x7f050031;
+        public static final int pose_rest=0x7f050032;
+        public static final int pose_wavein=0x7f050033;
+        public static final int pose_waveout=0x7f050034;
+        public static final int request_permission=0x7f050035;
+        public static final int scan=0x7f050036;
         public static final int status_bar_notification_info_overflow=0x7f050013;
-        public static final int unlocked=0x7f050036;
+        public static final int unlocked=0x7f050037;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f07008e;
@@ -2465,6 +2470,7 @@ containing a value of this type.
         public static final int Widget_SampleMessageTile=0x7f070156;
         public static final int myosdk__PopupActivityTheme=0x7f070157;
         public static final int myosdk__ScanActivityTheme=0x7f07000b;
+        public static final int reg_style_tab_hint=0x7f070158;
     }
     public static final class styleable {
         /** Attributes that can be used with a ActionBar.

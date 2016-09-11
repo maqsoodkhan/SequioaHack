@@ -1,45 +1,67 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="sequoia.hack.MainActivity"
     tools:ignore="MergeRootFrame">
 
-    <Button
-        android:id="@+id/btn_scan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Scan" />
 
-    <Button
-        android:id="@+id/btn_take_pic"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Take Pic" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/lock_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="@string/locked"
-        android:textSize="20dp"
-        android:layout_marginBottom="10dip"
-        tools:ignore="SpUsage" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dip"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/reg_layout_margin"
+            android:paddingRight="@dimen/reg_layout_margin">
 
-    <FrameLayout
-        android:id="@+id/container_id"
-        android:layout_width="300dip"
-        android:layout_gravity="center"
-        android:layout_height="200dip">
-    </FrameLayout>
+            <Button
+                android:id="@+id/btn_scan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Scan" />
 
-    <ImageView
-        android:id="@+id/save_image_view_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-</LinearLayout>
+            <TextView
+                android:id="@+id/lock_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginBottom="10dip"
+                android:text="@string/locked"
+                android:textSize="20dp"
+                tools:ignore="SpUsage" />
+
+            <FrameLayout
+                android:id="@+id/container_id"
+                android:layout_width="fill_parent"
+                android:layout_height="200dip">
+
+            </FrameLayout>
+
+            <EditText
+                android:id="@+id/et_phone_num"
+                android:layout_width="1000dip"
+                android:layout_height="40dip"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/edit_txt_port"
+                android:hint="Emergency Phone Number"
+                android:paddingLeft="10dip" />
+
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/edit_txt_port"
+                android:hint="Emergency Address"
+                android:paddingLeft="10dip" />
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
